@@ -72,3 +72,27 @@ var mas = [1,2,3,4.5];
 console.log("\u00e9\u00e9\u00e9\u00e9\u00e9\u00e9");
 // Суррогатная пара - символ юникода, пункты которого не умещаются в 16 бит - кодируются как последовательности из двух значений
 // Различные строковые методы манипулируют 16-битными значениями
+ var msg1 = "Hello js";
+ console.log(msg1.length);
+ console.log(msg1.charAt(0));
+ console.log(msg1.charAt(msg1.length - 1));
+ console.log(msg1.substring(1, 4));
+ console.log(msg1.slice(1, 4));
+ console.log(msg1.slice(-3));
+ console.log(msg1.indexOf("j"));
+ console.log(msg1.indexOf("l", 1));
+ console.log(msg1.toUpperCase());
+ console.log(msg1.split(" "));
+ console.log(msg1.replace("js", "world"));
+
+/^HTML/ // в начале строки
+;/[1-9][0-9]*/
+;/\bjs\b/;
+
+var text = "testing: 1, 2, 3";
+var pattern = /\d+/g;
+console.log(pattern.test(text));
+console.log(text.search(pattern));
+console.log(text.match(pattern));
+console.log(text.replace(pattern, "#"));
+console.log(text.split(/\D+/));
