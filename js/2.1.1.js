@@ -1,4 +1,20 @@
+"use strict";
+// Этот код будет работать по современному стандарту ES5
 
+
+var a = (5,6);
+//alert(a);
+
+
+var ourPlanetName, userName;
+ourPlanetName = "Земля";
+userName = "sobolev";
+
+var admin = "sobolev";
+var name;
+name = admin;
+//alert(name);
+/*alert("Hello")*/
 console.log("");
 console.log('testing');
 console.log("3.134");
@@ -27,8 +43,8 @@ console.log(later.toUTCString());
 console.log(later.toLocaleDateString());
 console.log(later.toLocaleTimeString());
 console.log(later.toISOString());
-x = 10;
-x != x;
+var x2 = 10;
+x2 = x2 !== x2;
 
 console.log(Number.POSITIVE_INFINITY);
 console.log(Number.NEGATIVE_INFINITY);
@@ -103,4 +119,15 @@ for (var i=0; i < a.length; i++) {
 	b[i] = a[i];
 }
 
-console.log("boolean: " + a[1] === b[1])
+console.log("boolean: " + a[1] === b[1]);
+
+
+
+function isInteger(num) {
+ return num === (num ^ 0);
+}
+
+console.log(isInteger(125));
+console.log(isInteger(-125));
+console.log(isInteger(-125.454545));
+console.log(isInteger(0.4));
