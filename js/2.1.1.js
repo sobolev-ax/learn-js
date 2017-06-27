@@ -96,3 +96,11 @@ console.log(text.search(pattern));
 console.log(text.match(pattern));
 console.log(text.replace(pattern, "#"));
 console.log(text.split(/\D+/));
+
+var a = ['a', 'b', 'c'];
+var b = [];
+for (var i=0; i < a.length; i++) {
+	b[i] = a[i];
+}
+
+console.log("boolean: " + a[1] === b[1])
