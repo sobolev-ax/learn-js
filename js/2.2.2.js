@@ -1,5 +1,102 @@
 "use strict";
 
+
+// //Создайте функцию multiplyNumeric, которая получает объект и умножает все численные свойства на 2
+// var menu = {
+//     width: 200,
+//     height: 300,
+//     title: "My menu"
+// };
+//
+// multiplyNumeric(menu);
+//
+// function isNumeric(n) {
+//     return !isNaN(parseFloat(n)) && isFinite(n)
+// }
+// function multiplyNumeric(obj) {
+//     var key;
+//     for (key in obj) {
+//         if(isNumeric( obj[key] )) {
+//             obj[key] = obj[key]*2;
+//         }
+//     }
+// }
+//
+// console.log(menu);
+
+// //Есть объект salaries с зарплатами. Напишите код, который выведет сумму всех зарплат.
+// var salaries = {
+//     "Вася": 100,
+//     "Петя": 300,
+//     "Даша": 250
+// };
+// var salariesEmpty  = {};
+// function calculateSalaries(obj) {
+//     var sum = 0;
+//     for(var key in obj) {
+//         sum += obj[key];
+//     }
+//     return sum;
+// }
+// console.log( calculateSalaries(salaries) );
+// console.log( calculateSalaries(salariesEmpty) );
+// // Есть объект salaries с зарплатами. Напишите код,
+// // который выведет имя сотрудника, у которого самая большая зарплата.
+// function maxSalaries(obj) {
+//     var nameMax = "Пустой массив";
+//     var salariesMax = 0;
+//     var nameAnother;
+//
+//     for(var key in obj) {
+//         if ( obj[key] > salariesMax ) {
+//             salariesMax = obj[key];
+//             nameMax = key;
+//         }
+//     }
+//
+//     return nameMax;
+// }
+// console.log( maxSalaries(salaries) );
+// console.log( maxSalaries(salariesEmpty) );
+
+// // Создайте функцию isEmpty(obj), которая возвращает true,
+// // если в объекте нет свойств и false – если хоть одно свойство есть.
+// function isEmpty(obj) {
+//     for(var key in obj) {
+//         return false;
+//     }
+//     return true;
+// }
+// var schedule = {};
+// alert( isEmpty(schedule) ); // true
+// schedule["8:30"] = "подъём";
+// alert( isEmpty(schedule) ); // false
+
+// var menu = {
+//     width: 300,
+//     height: 200,
+//     title: "menu"
+// };
+// for (var propName in menu) {
+//     console.log(propName + " : " + menu[propName]);
+// }
+
+// var user = {};
+// user["name"] = "Вася";
+// user["surname"] = "Петров";
+// user.name = "Сергей";
+// delete user.name;
+
+// var person = {};
+// person.name = 'Sasha';
+// person.age = 26;
+// if ("name" in person) console.log("Существует свойство");
+//
+// var person = {};
+// person['name'] = 'sobolev_ax';
+// person['he like computer games'] = true;
+// console.log(person);
+
 // // Есть стоимость в виде строки: "$120". То есть, первым идёт знак валюты, а затем – число.
 // // Создайте функцию extractCurrencyValue(str), которая будет из такой строки выделять
 // // число-значение, в данном случае 120.
