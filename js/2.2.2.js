@@ -1,5 +1,40 @@
 "use strict";
 
+// Напишите код, который:
+//      Запрашивает по очереди значения при помощи prompt и сохраняет их в массиве.
+//      Заканчивает ввод, как только посетитель введёт пустую строку, не число или нажмёт «Отмена».
+//      При этом ноль 0 не должен заканчивать ввод, это разрешённое число.
+//      Выводит сумму всех значений массива
+
+var number;
+var summ = 0;
+var arr = [];
+
+while(true) {
+    number = prompt("Введите слагаемое", "");
+    if ( number !== null && number !== "" && !isNaN(number)) {
+        arr.push(+number);
+        summ = summ + arr[ arr.length - 1 ];
+    } else {
+        if (summ !== 0) alert("Сумма: " + summ);
+        break;
+    }
+}
+
+// var arr = ["Яблоко", "Апельсин", "Груша", "Лимон"];
+// var rand = 0 + Math.floor(Math.random() * ((arr.length - 1) + 1 - 0));
+// alert(arr[rand]);
+
+// var styles = ["джаз", "блюз"];
+// styles.push("рок-н-ролл");
+// styles[ styles.length -2 ] = "классика";
+// alert(styles.shift());
+// styles.unshift("рэпп", "регги");
+
+// var goods = [ 0, 1, 2, 3, 4, 5, 6, 7 ];
+// console.log(goods[goods.length-1]);
+// goods.push("computer");
+// console.log(goods);
 
 // //Создайте функцию multiplyNumeric, которая получает объект и умножает все численные свойства на 2
 // var menu = {
