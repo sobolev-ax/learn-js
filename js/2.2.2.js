@@ -1,9 +1,17 @@
 "use strict";
-// Именованные функциональные выражения
-var f = function sayHi(name) {
-    alert( sayHi ); // изнутри функции - видно (выведет код функции)
-};
-alert(f());
+function pow(number, elevate) {
+    var result = 1;
+    for ( ; elevate ; elevate--){
+        result *= number;
+    }
+    return result;
+}
+
+// // Именованные функциональные выражения
+// var f = function sayHi(name) {
+//     alert( sayHi ); // изнутри функции - видно (выведет код функции)
+// };
+// alert(f());
 
 // //Напишите функцию fib(n), которая возвращает n-е число Фибоначчи.
 // function fib(n) {
