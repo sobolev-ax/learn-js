@@ -1,9 +1,21 @@
 "use strict";
 function pow(number, elevate) {
+    if (elevate === 0 && number === 0) {
+        return undefined;
+    }
+    if (elevate < 0) { // проверка на отрицательную степень
+        return undefined;
+    }
+    if (elevate % 1 > 0) { // проверка на дробную степень
+        return undefined
+    }
+
     var result = 1;
+
     for ( ; elevate ; elevate--){
         result *= number;
     }
+
     return result;
 }
 

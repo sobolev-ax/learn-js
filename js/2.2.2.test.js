@@ -1,17 +1,77 @@
 describe("pow", function() {
 
-    function makeTest(x) {
-        var expected = x * x * x;
-        it("при возведении " + x + " в степень 3 результат: " + expected, function() {
-            assert.equal(pow(x, 3), expected);
-        });
-    }
+    describe("возводит x в степень n", function() {
 
-    for (var x = 1; x <= 10; x++) {
-        makeTest(x);
-    }
+        function makeTest(x) {
+            var expected = x * x * x;
+            it("при возведении " + x + " в степень 3 результат: " + expected, function() {
+                assert.equal(pow(x, 3), expected);
+            });
+        }
+
+        for (var x = 1; x <= 5; x++) {
+            makeTest(x);
+        }
+
+    });
+
+    it("при возведении в отрицательную степень результат NaN", function() {
+        assert(isNaN(pow(2, -1)), "pow(2, -1) не NaN");
+    });
+
+    it("при возведении в дробную степень результат NaN", function() {
+        assert(isNaN(pow(2, 1.5)), "pow(2, -1.5) не NaN");
+    });
+
+    describe("любое число, кроме нуля, в степени 0 равно 1", function() {
+
+        function makeTest(x) {
+            it("при возведении " + x + " в степень 0 результат: 1", function() {
+                assert.equal(pow(x, 0), 1);
+            });
+        }
+
+        for (var x = -5; x <= 5; x += 2) {
+            makeTest(x);
+        }
+
+    });
+
+    it("ноль в нулевой степени даёт NaN", function() {
+        assert(isNaN(pow(0, 0)), "0 в степени 0 не NaN");
+    });
 
 });
+
+// describe("pow", function() {
+
+    // before(function() { console.log("Начало тестов"); });
+    // after(function() { console.log("Конец тестов"); });
+    //
+    // beforeEach(function() { console.log("Вход в тест"); });
+    // afterEach(function() { console.log("Выход из теста"); });
+
+    // it("при возведении в отрицательную степень результат NaN", function() {
+    //     assert( isNaN(pow(2, -1)), "pow(2, -1) не NaN" );
+    // });
+    //
+    // it("при возведении в дробную степень результат NaN", function() {
+    //     assert( isNaN( pow(2, 2.5) ), "pow(2, 2.5) не NaN" );
+    // });
+    //
+    //
+    // function makeTest(x) {
+    //     var expected = x * x * x;
+    //     it("при возведении " + x + " в степень 3 результат: " + expected, function() {
+    //         assert.equal(pow(x, 3), expected);
+    //     });
+    // };
+    //
+    // for (var x = 1; x <= 10; x++) {
+    //     makeTest(x);
+    // };
+
+// });
 
 // it("при возведении 2 в 3ю степень результат 8", function() {
 //     assert.equal(pow(2, 3), 8);
