@@ -1,25 +1,76 @@
 "use strict";
 
-// Напишите код, который:
-//      Запрашивает по очереди значения при помощи prompt и сохраняет их в массиве.
-//      Заканчивает ввод, как только посетитель введёт пустую строку, не число или нажмёт «Отмена».
-//      При этом ноль 0 не должен заканчивать ввод, это разрешённое число.
-//      Выводит сумму всех значений массива
+function filterRange(arr, a, b) {
 
-var number;
-var summ = 0;
-var arr = [];
-
-while(true) {
-    number = prompt("Введите слагаемое", "");
-    if ( number !== null && number !== "" && !isNaN(number)) {
-        arr.push(+number);
-        summ = summ + arr[ arr.length - 1 ];
-    } else {
-        if (summ !== 0) alert("Сумма: " + summ);
-        break;
-    }
 }
+
+var arr = [5, 4, 3, 8, 0];
+
+var filtered = filterRange(arr, 3, 5);
+// теперь filtered = [5, 4, 3]
+// arr не изменился
+
+// var arr = ["test", 2, 1.5, false];
+//
+// find(arr, "test"); // 0
+// find(arr, 2); // 1
+// find(arr, 1.5); // 2
+// find(arr, false); // 3
+// find(arr, 0); // -1
+//
+// function find(arr, value) {
+//     var key;
+//     if (arr.indexOf()) {
+//         var result = arr.indexOf(value);
+//         console.log("function find: " + result);
+//         return result;
+//     };
+//     for ( key in arr) {
+//         if ( arr[key] === value) {
+//             console.log("function find: " + key);
+//             return key;
+//         }
+//     }
+//     console.log("function find: -1")
+//     return -1;
+// }
+// if ([].indexOf) {
+//
+//     var find = function(array, value) {
+//         return array.indexOf(value);
+//     }
+//
+// } else {
+//     var find = function(array, value) {
+//         for (var i = 0; i < array.length; i++) {
+//             if (array[i] === value) return i;
+//         }
+//
+//         return -1;
+//     }
+//
+// }
+
+// // Напишите код, который:
+// //      Запрашивает по очереди значения при помощи prompt и сохраняет их в массиве.
+// //      Заканчивает ввод, как только посетитель введёт пустую строку, не число или нажмёт «Отмена».
+// //      При этом ноль 0 не должен заканчивать ввод, это разрешённое число.
+// //      Выводит сумму всех значений массива
+//
+// var number;
+// var summ = 0;
+// var arr = [];
+//
+// while(true) {
+//     number = prompt("Введите слагаемое", "");
+//     if ( number !== null && number !== "" && !isNaN(number)) {
+//         arr.push(+number);
+//         summ = summ + arr[ arr.length - 1 ];
+//     } else {
+//         if (summ !== 0) alert("Сумма: " + summ);
+//         break;
+//     }
+// }
 
 // var arr = ["Яблоко", "Апельсин", "Груша", "Лимон"];
 // var rand = 0 + Math.floor(Math.random() * ((arr.length - 1) + 1 - 0));
