@@ -1,14 +1,83 @@
 "use strict";
 
-function filterRange(arr, a, b) {
+// function getMaxSubSum(arr) {
+//     var sumPrev = 0;
+//     var sumCurrent = 0;
+//     var sumMax = 0;
+//     var i;
+//
+//     for(i = 0; i < arr.length; i++) {
+//         sumCurrent += arr[i];
+//         if (sumCurrent < 0) {
+//             sumCurrent = 0;
+//             if (sumPrev > sumMax) {
+//                 sumMax = sumPrev;
+//             }
+//         } else {
+//             if (sumCurrent > sumMax) {
+//                 sumMax = sumCurrent;
+//             }
+//             sumPrev = sumCurrent;
+//         }
+//     }
+//
+//     return sumMax;
+//
+// }
 
-}
+// var arr = [];
+//
+// for (var i = 0; i < 99; i++) arr.push(2 + i);
+// //console.log(arr);
+//
+// var p = 2;
+// var multy = 2;
+//
+// while(true) {
+//
+//     for( var i = 0; i < arr.length; i++ ) {
+//         if( arr.indexOf( multy * p ) !== -1  ) {
+//             arr[arr.indexOf( multy * p )] = "";
+//         }
+//         if ( p < 100 ) p++;
+//     }
+//
+//     if (multy < 100) {
+//         multy++;
+//         p = 2;
+//     } else {
+//          break;
+//     }
+// }
+//
+// console.log(arr);
+// var sum = 0;
+//
+// for (var i = 0; i < arr.length; i++) {
+//     if ( arr[i] !== "") {
+//         sum += +arr[i];
+//     }
+// }
+//
+// console.log(sum);
 
-var arr = [5, 4, 3, 8, 0];
-
-var filtered = filterRange(arr, 3, 5);
-// теперь filtered = [5, 4, 3]
-// arr не изменился
+// function filterRange(arr, a, b) {
+//     var key;
+//     var mass = [];
+//     for (key = 0; key < arr.length; key++) {
+//         if(a <= arr[key] && arr[key] <= b) {
+//             mass.push( arr[key] );
+//         }
+//     }
+//     console.log(mass);
+//     return mass;
+// }
+//
+// var arr = [5, 4, 3, 8, 0];
+//
+// var filtered = filterRange(arr, 3, 5);
+// // теперь filtered = [5, 4, 3]
+// // arr не изменился
 
 // var arr = ["test", 2, 1.5, false];
 //
