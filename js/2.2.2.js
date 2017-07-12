@@ -1,4 +1,10 @@
 "use strict";
+// arr.split(, ); - Разбить строку
+// arr.split(', ', 2);
+// arr.split('');
+// arr.join(', '); - склеивать в с троку
+// delete arr[0] - удаление с дыркой
+
 
 // function getMaxSubSum(arr) {
 //     var sumPrev = 0;
