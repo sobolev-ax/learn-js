@@ -1,6 +1,52 @@
 "use strict";
 
+var now = new Date();
+console.log(now);
 
+// console.log(sum());
+// console.log(sum(1));
+// console.log(sum(1, 2));
+// console.log(sum(1, 2, 3));
+// console.log(sum(1, 2, 3, 4));
+//
+// function sum() {
+//     var result = 0;
+//     for (var i = 0; i < arguments.length; i++) {
+//         result += arguments[i];
+//     }
+//     return result;
+// }
+
+// function f(x) {
+//     if (arguments.length === 0) {
+//         return 0;
+//     } else if (x === undefined) {
+//         return 1;
+//     }
+// }
+//
+// console.log(f(undefined)); // 1
+// console.log(f()); // 0
+
+// function showWarning(obj) {
+//     var width = obj.width || 200; // по умолчанию
+//     var height = obj.height || 100;
+//
+//     var contents = obj.contents || "Предупреждение";
+//
+//     //console.log(contents)
+// }
+// showWarning({
+//     contents: "Вы вызвали функцию" // и всё понятно!
+// });
+
+// function f(x) {
+//     var y = arguments[0];
+//     console.log(arguments[0] + "------" + arguments[1]);
+//     console.log(x);
+// }
+//
+// f(10, 15);
 
 // var arr = [1, 2, 3, 4, 5];
 // var sum = getSums(arr);
