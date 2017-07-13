@@ -1,0 +1,17 @@
+Массивы:
+.slice() - копирует массив
+
+arr.forEach(function (item, i, arr) {
+	console.log( i + ": " + item + " (массив: " + arr + ")" );
+});
+
+arr.filter( function( item, i, arr ) {
+	return item > 0;
+} );
+
+
+
+
+
+
+

@@ -1,5 +1,44 @@
 "use strict";
 
+
+
+// var arr = [1, 2, 3, 4, 5];
+// var sum = getSums(arr);
+//
+// console.log(arr);
+// console.log(sum);
+//
+// function getSums(arr) {
+//     var result = [];
+//
+//     arr.reduce( function (previousValue, currentItem) {
+//         //console.log(previousValue + "-----" + currentItem);
+//         result.push(  previousValue + currentItem);
+//         return previousValue + currentItem;
+//     }, 0);
+//
+//     return result;
+// }
+
+// var arr = ["Есть", "жизнь", "на", "Марсе"];
+// var arrLength = arr.map( function(item) {
+//     return item.length;
+// });
+//
+// console.log(arrLength); // 4,5,2,5
+
+// forEach – для перебора массива.
+// filter – для фильтрации массива.
+// every/some – для проверки массива.
+// map – для трансформации массива в массив.
+// reduce/reduceRight – для прохода по массиву с вычислением значения.
+
+// var arr = [1, 2, 3, 4];
+// var result = arr.reduce( function (previousValue, current) {
+//     return current + previousValue;
+// }, 0)
+// console.log(result);
+
 // function unique(arr) {
 //     var obj = {};
 //     var result = [];
