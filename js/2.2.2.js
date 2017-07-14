@@ -1,5 +1,271 @@
 "use strict";
 
+
+var arr = [1, 2, 3, 4, 5, 6, 7];
+
+
+
+
+console.log( filter(arr, function(a) {
+    return a % 2 == 0
+}));
+
+console.log( filter(arr, inBetween(3, 6)) ); // 3,4,5,6
+
+function filter(arr, func) {
+    var result = [];
+    var value;
+
+    for (var i = 0; i < arr.length; i++) {
+        value = arr[i];
+        if ( func(value) ) {
+            result.push(value);
+        }
+    }
+
+    //console.log(result);
+    return result;
+}
+
+function inBetween(a, b) {
+    return true;
+}
+
+
+
+
+
+
+
+
+
+// var users = [{
+//     name: "Вася",
+//     surname: 'Иванов',
+//     age: 20
+// }, {
+//     name: "Петя",
+//     surname: 'Чапаев',
+//     age: 25
+// }, {
+//     name: "Маша",
+//     surname: 'Медведева',
+//     age: 18
+// }];
+//
+// users.sort(byField('name'));
+// users.forEach(function(user) {
+//     console.log( ( user.name ) );
+// }); // Вася, Маша, Петя
+//
+// users.sort(byField('age'));
+// users.forEach(function(user) {
+//     console.log( ( user.name ) );
+// }); // Маша, Вася, Петя
+//
+// function byField(str) {
+//
+//     if (str === "name") {
+//         return function (a, b) {
+//             return a.name > b.name ? 1 : -1;
+//         }
+//     } else if (str === "age") {
+//         return function (a, b) {
+//             return a.age > b.age ? 1 : -1;
+//         }
+//     }
+//
+// }
+
+// var buffer = makeBuffer();
+//
+// function makeBuffer() {
+//     var buffer = "";
+//
+//     function bf(value) {
+//
+//         if (arguments.length == 0) {
+//             return buffer;
+//         }
+//
+//         buffer = buffer + value;
+//
+//         // if (value !== undefined) {
+//         //     //console.log('push');
+//         //     buffer = buffer + "" + value;
+//         // } else {
+//         //     //console.log('pull');
+//         //     return buffer;
+//         // }
+//     };
+//
+//     bf.clear = function () {
+//         buffer = ""
+//     }
+//
+//     return bf;
+// }
+//
+// // добавить значения к буферу
+// buffer('Замыкания');
+// buffer(' Использовать');
+// buffer(' Нужно!');
+// alert( buffer() ); // 'Замыкания Использовать Нужно!'
+//
+// var buffer2 = makeBuffer();
+// buffer2(0);
+// buffer2(1);
+// buffer2(0);
+//
+// buffer2.clear();
+//
+// alert( buffer2() ); // '010'
+
+// buffer(2);
+// buffer(0);
+// buffer(1);
+// buffer(7);
+//
+// console.log( buffer() );
+
+// function sum(a) {
+//     //var a = arguments[0];
+//     return function (b) {
+//         return a + b;
+//         //return a + arguments[0];
+//     }
+// }
+// console.log(sum(1)(2));
+
+// function makeCounter() {
+//     var currentCount = 1;
+//
+//     function counter() {
+//         return currentCount++;
+//     }
+//
+//     counter.set = function (value) {
+//         currentCount = value;
+//     };
+//     counter.reset = function () {
+//         currentCount = 1;
+//     };
+//
+//     return counter;
+// };
+//
+// var counter = makeCounter();
+//
+// alert( counter() ); // 1
+// alert( counter() ); // 2
+//
+// counter.set(5);
+// alert( counter() ); // 5
+
+// function makeCounter() {
+//     var currentCount = 1;
+//
+//     return {
+//         getNext: function() {
+//             return currentCount++;
+//         },
+//         set: function (value) {
+//             currentCount = value;
+//         },
+//         reset: function () {
+//             currentCount = 1;
+//         }
+//     };
+// };
+// var counter = makeCounter();
+// console.log( counter.getNext() );
+// console.log( counter.getNext() );
+// counter.set(5)
+// console.log( counter.getNext() );
+
+// var a = 1;
+//
+// function getFunc() {
+//     var a = 2;
+//
+//     var func = new Function('', 'alert(a)');
+//
+//     return func;
+// }
+//
+// getFunc()(); // 1, из window
+
+// //Здесь внутренняя функция будет искать – и находить currentCount
+// // каждый раз в самом внешнем объекте переменных: глобальном объекте window.
+// //В результате все счётчики будут разделять единое, глобальное текущее значение.
+// var currentCount = 1;
+//
+// function makeCounter() {
+//     return function() {
+//         return currentCount++;
+//     };
+// }
+//
+// var counter = makeCounter();
+// var counter2 = makeCounter();
+//
+// alert( counter() ); // 1
+// alert( counter() ); // 2
+//
+// alert( counter2() ); // 3
+// alert( counter2() ); // 4
+
+// function makeCounter() {
+//     var currentCount = 1;
+//
+//     return function() {
+//         var currentCount;
+//         // можно ли здесь вывести currentCount из внешней функции (равный 1)?
+//     };
+// }
+
+// var a = 5;
+//
+// (function() {
+//     alert(a)
+// })()
+
+// function test() {
+//
+//     alert( window );
+//
+//     // LexicalEnvironment = {
+//     //     window: undefined
+//     // }
+//
+//
+//     var window = 5;
+//
+//     alert( window );
+// }
+//
+// test();
+
+// var value = 0;
+//
+// function f() {
+//     if (1) {
+//         value = true;
+//     } else {
+//         value = false;
+//     }
+//
+//     alert( value );
+// }
+//
+// f();
+// console.log(value)
+
+// if ("a" in window) {
+//     a = 1;
+// }
+// alert( a ); // <-- error!
+
 // function formatDate(date) {
 //     var diff = new Date() - date; // разница в миллисекундах
 //
