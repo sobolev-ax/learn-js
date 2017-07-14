@@ -1,7 +1,267 @@
 "use strict";
 
-var now = new Date();
-console.log(now);
+// function formatDate(date) {
+//     var diff = new Date() - date; // разница в миллисекундах
+//
+//     if (diff < 1000) { // прошло менее 1 секунды
+//         return 'только что';
+//     }
+//
+//     var sec = Math.floor(diff / 1000); // округлить diff до секунд
+//
+//     if (sec < 60) {
+//         return sec + ' сек. назад';
+//     }
+//
+//     var min = Math.floor(diff / 60000); // округлить diff до минут
+//     if (min < 60) {
+//         return min + ' мин. назад';
+//     }
+//
+//     // форматировать дату, с учетом того, что месяцы начинаются с 0
+//     var d = date;
+//     d = [
+//         '0' + d.getDate(),
+//         '0' + (d.getMonth() + 1),
+//         '' + d.getFullYear(),
+//         '0' + d.getHours(),
+//         '0' + d.getMinutes()
+//     ];
+//
+//     for (var i = 0; i < d.length; i++) {
+//         d[i] = d[i].slice(-2);
+//     }
+//
+//     return d.slice(0, 3).join('.') + ' ' + d.slice(3).join(':');
+// }
+//
+// alert( formatDate(new Date(new Date - 1)) ); // только что
+//
+// alert( formatDate(new Date(new Date - 30 * 1000)) ); // 30 сек. назад
+//
+// alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // 5 мин. назад
+//
+// alert( formatDate(new Date(new Date - 86400 * 1000)) ); // вчерашняя дата в формате "дд.мм.гг чч:мм"
+
+// function formatDate(date) {
+//     var now = new Date();
+//     var dif = now - date;
+//
+//     if ( dif < 1000 ) {
+//         return "только что";
+//     } else if (dif < 60 * 1000) {
+//         return dif / 1000 + " сек. назад";
+//     } else if (dif < 60 * 60 * 1000) {
+//         return dif / (60 * 1000) + " мин. назад";
+//     } else {
+//         return printDate(date);
+//     }
+// }
+//
+// function printDate(d) {
+//     var year = "" + d.getFullYear();
+//     var month = "" + (d.getMonth() + 1);
+//     var day = "" + d.getDate();
+//     var hours = "" + d.getHours();
+//     var minutes = "" + d.getMinutes();
+//
+//     year = year.slice(-2);
+//     if (month.length === 1) month = "0" + month;
+//     if (day.length === 1) day = "0" + day;
+//     if (hours.length === 1) hours = "0" + hours;
+//     if (minutes.length === 1) minutes = "0" + minutes;
+//
+//
+//     //console.log(year + '.' + month + '.' + day);
+//
+//
+//     return day + '.' + month + '.' + year + " " + hours + ":" + minutes;
+// }
+//
+// console.log( formatDate(new Date(new Date - 1)) ); // "только что"
+//
+// console.log( formatDate(new Date(new Date - 30 * 1000)) ); // "30 сек. назад"
+//
+// console.log( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // "5 мин. назад"
+//
+// console.log( formatDate(new Date(new Date - 86400 * 1000)) ); // вчерашняя дата в формате "дд.мм.гг чч:мм"
+
+// var d = new Date(2014, 0, 30); // 30 января 2014
+// console.log( formatDate(d) ); // '30.01.14'
+//
+// function formatDate(d) {
+//     var year = "" + d.getFullYear();
+//     var month = "" + (d.getMonth() + 1);
+//     var day = "" + d.getDate();
+//
+//     year = year.slice(-2);
+//     if (month.length === 1) month = "0" + month;
+//     if (day.length === 1) day = "0" + day;
+//
+//
+//     //console.log(year + '.' + month + '.' + day);
+//
+//
+//     return day + '.' + month + '.' + year
+// }
+
+// console.log( getSecondsToTomorrow() );
+//
+// function getSecondsToTomorrow() {
+//     var dateNow = new Date();
+//     var dateNext = new Date(
+//         dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate() + 1);
+//     return Math.round( (dateNext - dateNow) / 1000 );
+// }
+
+// function getSecondsToday() {
+//     var date = new Date();
+//     return date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+// }
+//
+// console.log(getSecondsToday());
+
+// function getLastDayOfMonth(year, month) {
+//     var date = new Date (year, month + 1, 0);
+//
+//     return date.getDate();
+// }
+//
+// console.log( getLastDayOfMonth(2012, 1) ); //29
+
+// var date = new Date(2015, 0, 2);
+//
+// console.log( ( getDateAgo(date, 1) ) ); // 1, (1 января 2015)
+// console.log( ( getDateAgo(date, 2) ) ); // 31, (31 декабря 2014)
+// console.log( ( getDateAgo(date, 365) ) ); // 2, (2 января 2014)
+//
+// function getDateAgo(date, days) {
+//     var dateCopy = new Date(date);
+//
+//     dateCopy.setDate(dateCopy.getDate() - days);
+//
+//     return dateCopy.getDate();
+// }
+
+// var date = new Date(2012, 0, 8);  // 3 янв 2012
+// alert( getLocalDay(date) );       // вторник, выведет 2
+//
+// function getLocalDay(date) {
+//     return date.getUTCDay() + 1;
+// }
+
+// var date = new Date(2012,0,3);  // 3 января 2012
+// alert( getWeekDay(date) );      // Должно вывести 'вт'
+//
+// function getWeekDay(date) {
+//     return date.toLocaleString("ru", {weekday: 'short'});
+// }
+// function getWeekDay(date) {
+//     var days = ["вс", "пн", "вт" ,"ср", "чт", "пт", "сб"];
+//
+//     return days[date.getDay()];
+// }
+// function getWeekDay(date) {
+//     var result;
+//
+//     switch (date.getDay()) {
+//         case 0:
+//             result = "вс";
+//             break;
+//         case 1:
+//             result = "пн";
+//             break;
+//         case 2:
+//             result = "вт";
+//             break;
+//         case 3:
+//             result = "ср";
+//             break;
+//         case 4:
+//             result = "чт";
+//             break;
+//         case 5:
+//             result = "пт";
+//             break;
+//         case 6:
+//             result = "сб";
+//             break;
+//     }
+//
+//     return result;
+// }
+
+// var date = new Date(2012, 1, 20, 3, 12, 0);
+//
+// console.log(date);
+
+// console.time("start")
+// console.log(performance.now())
+//
+//
+// console.timeEnd("start")
+
+// var arr = [];
+// for (var i = 0; i < 1000; i++) arr[i] = 0;
+//
+// function walkIn(arr) {
+//     for (var key in arr) arr[key]++;
+// }
+//
+// function walkLength(arr) {
+//     for (var i = 0; i < arr.length; i++) arr[i]++;
+// }
+//
+// function bench(f) {
+//     var date = new Date();
+//     for (var i = 0; i < 1000; i++) f(arr);
+//     return new Date() - date;
+// }
+//
+// // bench для каждого теста запустим много раз, чередуя
+// var timeIn = 0,
+//     timeLength = 0;
+// for (var i = 0; i < 100; i++) {
+//     timeIn += bench(walkIn);
+//     timeLength += bench(walkLength);
+// }
+// alert( 'Время walkIn: ' + timeIn + 'мс' );
+// alert( 'Время walkLength: ' + timeLength + 'мс' );
+
+
+// var arr = [];
+// for (var i = 0; i < 1000; i++) arr[i] = 0;
+//
+// function walkIn(arr) {
+//     for (var key in arr) arr[key]++;
+// }
+//
+// function walkLength(arr) {
+//     for (var i = 0; i < arr.length; i++) arr[i]++;
+// }
+//
+// function bench(f) {
+//     var date = new Date();
+//     for (var i = 0; i < 10000; i++) f(arr);
+//     return new Date() - date;
+// }
+//
+// alert( 'Время walkIn: ' + bench(walkIn) + 'мс' );
+// alert( 'Время walkLength: ' + bench(walkLength) + 'мс' );
+
+// var start = new Date; // засекли время
+//
+// // что-то сделать
+// for (var i = 0; i < 100000; i++) {
+//     var doSomething = i * i * i;
+// }
+//
+// var end = new Date; // конец измерения
+//
+// alert( "Цикл занял " + (end - start) + " ms" );
+
+// var now = new Date();
+// console.log(now);
 
 // console.log(sum());
 // console.log(sum(1));
