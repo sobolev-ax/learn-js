@@ -1,43 +1,555 @@
 "use strict";
 
+function User(fullName) {
+    this.fullName = fullName;
+}
 
-var arr = [1, 2, 3, 4, 5, 6, 7];
+var vasya = new User("Василий Попкин");
 
+Object.defineProperties(User, {
+    firstName: {
+        get: function () {
 
+        },
+        set: function (value) {
 
-
-console.log( filter(arr, function(a) {
-    return a % 2 == 0
-}));
-
-console.log( filter(arr, inBetween(3, 6)) ); // 3,4,5,6
-
-function filter(arr, func) {
-    var result = [];
-    var value;
-
-    for (var i = 0; i < arr.length; i++) {
-        value = arr[i];
-        if ( func(value) ) {
-            result.push(value);
         }
+    },
+    surname: {
+
     }
+});
 
-    //console.log(result);
-    return result;
-}
+// var obj = {
+//     test: 5
+// };
+//
+// var descriptor = Object.getOwnPropertyDescriptor(obj, 'test');
+//
+// console.log(descriptor);
+//
+// delete descriptor.value;
+// delete descriptor.writable;
+//
+// descriptor.get = function () {
+//     alert( 'preved :) ');
+// };
+//
+// delete obj.test;
+//
+// Object.defineProperty(obj, 'test', descriptor);
+//
+// obj.test;
 
-function inBetween(a, b) {
-    return true;
-}
+// var obj = {
+//     a: 1,
+//     b: 2,
+//     internal: 3
+// };
+//
+// Object.defineProperty(obj, "internal", {
+//     enumerable: false
+// });
+//
+// alert( Object.keys(obj) ); // a,b
+// alert( Object.getOwnPropertyNames(obj) ); // a, internal, b
+
+// function User(name, age) {
+//     this.name = name;
+//     this.age = age;
+// }
+//
+// function User(name, birthday) {
+//     this.birthday = birthday;
+//
+//     Object.defineProperty(this, "age", {
+//         get: function () {
+//             var todayYear = new Date().getFullYear();
+//             return todayYear - this.birthday.getFullYear();
+//         }
+//     });
+// }
+//
+// var pete = new User("Петя", new Date(1987, 6, 1));
+//
+// console.log( pete.birthday);
+// console.log( pete.age);
+
+// var user = {
+//     firstName: "",
+//     surname: "",
+//     get fullName() {
+//         return this.firstName + " " + this.surname;
+//     },
+//     set fullName(value) {
+//         var split = value.split(' ');
+//         this.firstName = split[0];
+//         this.surname = split[1];
+//     }
+// }
+
+// var user = {
+//     firstName: "Вася",
+//     surname: "Петров"
+// }
+//
+// Object.defineProperty(user, "fullName", {
+//     get: function () {
+//         return this.firstName + " " + this.surname;
+//     },
+//     set: function (value) {
+//         var split = value.split(" ");
+//         this.firstName = split[0];
+//         this.surname = split[1];
+//     }
+// });
+//
+// console.log( user.fullName);
+//
+// user.fullName = "sobolev ax";
+//
+// console.log( user.fullName);
+
+// var user = {
+//     name: "Вася",
+//     toString: function () {
+//         return this.name;
+//     }
+// };
+//
+// Object.defineProperty(user, "toString", {enumerable: false});
+//
+// for (var key in user) alert(key);
+
+// var user = {};
+// user.name = "Вася";
+//
+// Object.defineProperty(user, "name", {
+//     value: "Вася",
+//     configurable: true,
+//     writable: true,
+//     enumerable: true
+// });
 
 
+// function Calculator() {
+//     var methods = {
+//         "-": function(a, b) {
+//             return a - b;
+//         },
+//         "+": function(a, b) {
+//             return a + b;
+//         }
+//     };
+//
+//     this.calculate = function(str) {
+//
+//         var split = str.split(' '),
+//             a = +split[0],
+//             op = split[1],
+//             b = +split[2]
+//
+//         if (!methods[op] || isNaN(a) || isNaN(b)) {
+//             return NaN;
+//         }
+//
+//         return methods[op](a, b);
+//     }
+//
+//     this.addMethod = function(name, func) {
+//         methods[name] = func;
+//     };
+// }
+//
+// var calc = new Calculator;
+//
+// calc.addMethod("*", function(a, b) {
+//     return a * b;
+// });
+// calc.addMethod("/", function(a, b) {
+//     return a / b;
+// });
+// calc.addMethod("**", function(a, b) {
+//     return Math.pow(a, b);
+// });
+//
+// var result = calc.calculate("2 ** 3");
+// alert( result ); // 8
 
 
+// function Accumulator(startingValue) {
+//     var value = +startingValue;
+//     this.read = function () {
+//         this.value += +prompt("слагаемое", 0);
+//     };
+//     this.value = (function () {
+//         return value;
+//     })();
+// }
+//
+// var accumulator = new Accumulator(1); // начальное значение 1
+// accumulator.read(); // прибавит ввод prompt к текущему значению
+// accumulator.read(); // прибавит ввод prompt к текущему значению
+// alert( accumulator.value ); // выведет текущее значение
 
+// function Calculator() {
+//     this.read = function () {
+//         this.x = +prompt("x", 0);
+//         this.y = +prompt("y", 0);
+//     };
+//     this.sum = function () {
+//         return this.x + this.y;
+//     };
+//     this.mul = function () {
+//         return this.x * this.y;
+//     }
+// }
+//
+// var calculator = new Calculator();
+// calculator.read();
+//
+// alert( "Сумма=" + calculator.sum() );
+// alert( "Произведение=" + calculator.mul() );
 
+// var obj = {};
+//
+// function A() {
+//     return obj;
+// }
+// function B() {
+//     return obj;
+// }
+//
+// var a = new A;
+// var b = new B;
+//
+// alert( a == b ); // true
 
+// function BigAnimal() {
+//     this.name = "Мышь";
+//     return { name: "Годзилла" };  // <-- возвратим объект
+// }
+//
+// alert( new BigAnimal().name );  // Годзилла, получили объект вместо this
 
+// function Animal(name) {
+//     this.name = name;
+//     this.canWalk = true;
+// }
+//
+// var animal = new Animal("pig");
+
+// function sum(a) {
+//     var result = a;
+//     function f(b) {
+//         result = result + b;
+//         return f;
+//     }
+//     f.toString = function () {
+//         return result;
+//     }
+//     return f;
+// }
+// console.log( sum(5)(-1)(2) );
+// console.log( sum(0)(1)(2)(3)(4)(5) );
+
+// var ladder = {
+//     step: 0,
+//     up: function() { // вверх по лестнице
+//         this.step++;
+//         return this;
+//     },
+//     down: function() { // вниз по лестнице
+//         this.step--;
+//         return this;
+//     },
+//     showStep: function() { // вывести текущую ступеньку
+//         alert( this.step );
+//         return this;
+//     }
+// };
+//
+// // ladder.up();
+// // ladder.up();
+// // ladder.down();
+// // ladder.showStep(); // 1
+//
+// ladder.up().up().down().up().down().showStep();
+
+// var calculator = {
+//
+//     read: function () {
+//         this.x = +prompt("x?");
+//         this.y = +prompt("y?");
+//         console.log(this.x + " " + this.y)
+//     },
+//     sum: function () {
+//         return this.y + this.x;
+//     },
+//     mul: function () {
+//         return this.y * this.x;
+//     }
+// }
+//
+// calculator.read();
+// alert( calculator.sum() );
+// alert( calculator.mul() );
+
+// var name = "";
+//
+// var user = {
+//     name: "Василий",
+//
+//     export: function() {
+//         return {
+//             value: this
+//         };
+//     }
+//
+// };
+//
+// alert( user.export().value.name );
+
+// var name = "";
+//
+// var user = {
+//     name: "Василий",
+//
+//     export: function() {
+//         return this;
+//     }
+//
+// };
+//
+// alert( user.export().name );
+
+// var user = {
+//     firstName: "Василий",
+//
+//     export: this
+// };
+//
+// alert( user.export.firstName );
+
+// var obj;
+//
+// obj = {
+//     go: function() { alert(this); }
+// };
+//
+// var method = {};
+//
+// method = obj.go;
+//
+// method();
+
+// var obj = {
+//     go: function() { console.log(this) }
+// };
+//
+// (obj.go)()
+
+// var arr = ["a", "b"];
+//
+// arr.push(function() {
+//     alert( this );
+// })
+//
+// arr[2](); // ?
+
+// var user = {
+//     name: 'Василий',
+//
+//     // метод
+//     sayHi: function() {
+//         alert( 'Привет!' );
+//     }
+//
+// };
+//
+// // Вызов
+// console.log(user.sayHi())
+
+// var user = {
+//     firstName: "Василий",
+//
+//     export: this
+// };
+//
+// alert( user.export.firstName );
+
+// var obj, method;
+//
+// obj = {
+//     go: function() { alert(this); }
+// };
+//
+// obj.go();            // (1) object
+//
+// (obj.go)();          // (2) object
+
+//(method = obj.go)();      // (3) undefined
+
+//(obj.go || obj.stop)(); // (4) undefined
+
+// var obj = {
+//     go: function() { alert(this) }
+// }
+//
+// ;(obj.go)()
+
+// var arr = ["a", "b"];
+//
+// arr.push(function() {
+//     alert( this );
+// })
+//
+// arr[2](); // ?
+
+// var user = {
+//     name: "Вася",
+//     hi: function() { alert(this.name); },
+//     bye: function() { alert("Пока"); }
+// };
+//
+// user.hi(); // Вася (простой вызов работает)
+//
+// // а теперь вызовем user.hi или user.bye в зависимости от имени
+// (user.name == "Вася" ? user.hi : user.bye)(); // undefined
+
+// function func() {
+//     alert( this ); // выведет [object Window] или [object global]
+// }
+//
+// func();
+
+// var i = 0;
+//
+// function fast() {
+//     i++;
+// }
+//
+// function slow() {
+//     with(i) {}
+//     i++;
+// }
+//
+// var time = performance.now();
+// while (i < 1000000) fast();
+// alert( "Без with: " + (performance.now() - time) );
+//
+// var time = performance.now();
+// i = 0;
+// while (i < 1000000) slow();
+// alert( "С with: " + (performance.now() - time) );
+
+// var obj = {
+//     weight: 10
+// };
+//
+// with(obj) {
+//     weight = 20; // (1)
+//     size = 35; // (2)
+// }
+//
+// alert( obj.size );
+// alert( window.size );
+
+// function sumTo(n) { // обычный цикл 1+2+...+n
+//     var result = 0;
+//     for (var i = 1; i <= n; i++) {
+//         result += i;
+//     }
+//     return result;
+// }
+//
+// function sumToRec(n) { // рекурсия sumToRec(n) = n+SumToRec(n-1)
+//     return n == 1 ? 1 : n + sumToRec(n - 1);
+// }
+//
+// var timeLoop = performance.now();
+// for (var i = 1; i < 1000; i++) sumTo(1000); // цикл
+// timeLoop = performance.now() - timeLoop;
+//
+// var timeRecursion = performance.now();
+// for (var i = 1; i < 1000; i++) sumToRec(1000); // рекурсия
+// timeRecursion = performance.now() - timeRecursion;
+//
+// alert( "Разница в " + (timeRecursion / timeLoop) + " раз" );
+
+// // модуль - скрыть внутренние детали реализации скрипта.
+// (function() {
+//     var message = "hello!!";
+//
+//     function showMessage() {
+//         alert ( message )
+//     }
+//
+//     showMessage()
+// })();
+
+// function makeArmy() {
+//     var shooters = [];
+//     var key = 0;
+//     for (var i = 0; i < 10; i++) {
+//         // var shooter = function() { // функция-стрелок
+//         //
+//         //     alert(key++); // выводит свой номер
+//         // };
+//         // shooters.push(shooter);
+//
+//         var shooter = (function(x) {
+//
+//             return function() {
+//                 alert( x );
+//             };
+//
+//         })(i);
+//
+//         shooters.push(shooter);
+//     }
+//
+//     return shooters;
+// }
+//
+// var army = makeArmy();
+//
+// army[0](); // стрелок выводит 10, а должен 0
+// army[5](); // стрелок выводит 10...
+// // .. все стрелки выводят 10 вместо 0,1,2...9
+
+// var arr = [1, 2, 3, 4, 5, 6, 7];
+//
+// console.log( filter(arr, function(a) {
+//     return a % 2 == 0
+// }));
+//
+// console.log( filter(arr, inBetween(3, 6)) ); // 3,4,5,6
+// console.log( filter(arr, inArray([1, 2, 10])) ); // 1,2
+//
+// function filter(arr, func) {
+//     var result = [];
+//
+//     for (var i = 0; i < arr.length; i++) {
+//         var val = arr[i];
+//         if (func(val)) {
+//             result.push(val);
+//         }
+//     }
+//
+//     return result;
+// }
+//
+// function inBetween(a, b) {
+//     return function(x) {
+//         return x >= a && x <= b;
+//     };
+// }
+// function inArray(arr) {
+//     return function(x) {
+//         return arr.indexOf(x) != -1;
+//     };
+// }
 
 // var users = [{
 //     name: "Вася",
