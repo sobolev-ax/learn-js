@@ -1,24 +1,573 @@
 "use strict";
 
-function User(fullName) {
-    this.fullName = fullName;
-}
+//alert( {}.__proto__.toString );
 
-var vasya = new User("Василий Попкин");
+// function Rabbit() {}
+// Rabbit.prototype = {
+//     eats: true
+// };
+//
+// var rabbit = new Rabbit();
+//
+// delete Rabbit.prototype.eats; // (*)
+//
+// alert( rabbit.eats );
 
-Object.defineProperties(User, {
-    firstName: {
-        get: function () {
+// function Machine() {
+//     var enabled = false;
+//
+//     this.enable = function() {
+//         enabled = true;
+//     };
+//
+//     this.disable = function() {
+//         enabled = false;
+//     };
+// }
+//
+// function CoffeeMachine(power) {
+//     Machine.call(this); // отнаследовать
+//
+//     var waterAmount = 0;
+//
+//     this.setWaterAmount = function(amount) {
+//         waterAmount = amount;
+//     };
+//
+// }
+//
+// var coffeeMachine = new CoffeeMachine(10000);
+//
+// coffeeMachine.enable();
+// coffeeMachine.setWaterAmount(100);
+// coffeeMachine.disable();
 
-        },
-        set: function (value) {
+// function CoffeeMachine(power, capacity) {
+//     var waterAmount = 0;
+//
+//     var WATER_HEAT_CAPACITY = 4200;
+//
+//     function getTimeToBoil() {
+//         return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
+//     }
+//
+//     this.setWaterAmount = function(amount) {
+//         // ... проверки пропущены для краткости
+//         waterAmount = amount;
+//     };
+//
+//     this.getWaterAmount = function(amount) {
+//         return waterAmount;
+//     };
+//
+//     function onReady() {
+//         alert( 'Кофе готов!' );
+//     }
+//
+//     this.run = function() {
+//         setTimeout(function() {
+//             onReady();
+//         }, getTimeToBoil());
+//     };
+//
+//     this.setOnReady = function (func) {
+//         onReady = func;
+//     }
+//
+// }
+//
+// var coffeeMachine = new CoffeeMachine(20000, 500);
+// coffeeMachine.setWaterAmount(150);
+//
+// coffeeMachine.setOnReady(function() {
+//     var amount = coffeeMachine.getWaterAmount();
+//     alert( 'Готов кофе: ' + amount + 'мл' ); // Кофе готов: 150 мл
+// });
+//
+// coffeeMachine.run();
 
-        }
-    },
-    surname: {
+// function User() {
+//     var firstName;
+//     var surname;
+//
+//     this.setFirstName = function (value) {
+//         firstName = value;
+//     };
+//     this.setSurname = function (value) {
+//         surname = value;
+//     };
+//     this.getFullName = function (value) {
+//         return firstName + " " + surname;
+//     };
+// }
+//
+// var user = new User();
+// user.setFirstName("Петя");
+// user.setSurname("Иванов");
+//
+// alert( user.getFullName() ); // Петя Иванов
 
-    }
-});
+// function CoffeeMachine(power, capacity) { // capacity - ёмкость кофеварки
+//     var waterAmount = 0;
+//
+//     var WATER_HEAT_CAPACITY = 4200;
+//
+//     function getTimeToBoil() {
+//         return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
+//     }
+//
+//     // "умная" установка свойства
+//     this.setWaterAmount = function(amount) {
+//         if (amount < 0) {
+//             throw new Error("Значение должно быть положительным");
+//         }
+//         if (amount > capacity) {
+//             throw new Error("Нельзя залить воды больше, чем " + capacity);
+//         }
+//
+//         waterAmount = amount;
+//     };
+//
+//     function onReady() {
+//         alert( 'Кофе готов!' );
+//     }
+//
+//     this.run = function() {
+//         setTimeout(onReady, getTimeToBoil());
+//     };
+//
+// }
+//
+// var coffeeMachine = new CoffeeMachine(1000, 500);
+// coffeeMachine.setWaterAmount(600); // упс, ошибка!
+
+// function CoffeeMachine(power) {
+//     this.waterAmount = 0;
+//
+//     var WATER_HEAT_CAPACITY = 4200;
+//
+//     var self = this;
+//
+//     var timerId;
+//
+//     function getBoilTime() {
+//         return self.waterAmount * WATER_HEAT_CAPACITY * 80 / power;
+//     }
+//
+//     function onReady() {
+//         alert( 'Кофе готов!' );
+//     }
+//
+//     this.run = function() {
+//         timerId = setTimeout(onReady, getBoilTime());
+//     };
+//
+//     this.stop = function() {
+//         clearTimeout(timerId);
+//     };
+//
+// }
+//
+// var coffeeMachine = new CoffeeMachine(50000);
+// coffeeMachine.waterAmount = 200;
+//
+// coffeeMachine.run();
+// coffeeMachine.stop(); // кофе приготовлен не будет;
+
+// var expr, res;
+//
+// while (true) {
+//     expr = prompt("Введите выражение?", '2-');
+//     if (expr == null) break;
+//
+//     try {
+//         res = eval(expr);
+//         if (isNaN(res)) {
+//             throw new Error("Результат неопределён");
+//         }
+//
+//         break;
+//     } catch (e) {
+//         alert( "Ошибка: " + e.message + ", повторите ввод" );
+//     }
+// }
+//
+// alert( res );
+
+// function readData() {
+//     var data = '{ "name": "Вася", "age": 30 }';
+//
+//     try {
+//         // ...
+//         blabla(); // ошибка!
+//     } catch (e) {
+//         // ...
+//         if (e.name != 'SyntaxError') {
+//             throw e; // пробрасываем
+//         }
+//     }
+// }
+//
+// try {
+//     readData();
+// } catch (e) {
+//     alert( "Поймал во внешнем catch: " + e ); // ловим
+// }
+
+// var data = '{ "name": "Вася", "age": [1, 2, 3] }'; // данные NOкорректны
+//
+// try {
+//
+//     var user = JSON.parse(data);
+//
+//     if (!user.name) {
+//         throw new SyntaxError("Ошибка в данных");
+//     }
+//
+//     blabla(); // произошла непредусмотренная ошибка
+//
+//     alert( user.name );
+//
+// } catch (e) {
+//
+//     if (e.name == "SyntaxError") {
+//         alert( "Извините, в данных ошибка" );
+//     } else {
+//         throw e;
+//     }
+//
+// }
+
+// var data = '{ "age": 30 }'; // данные неполны
+//
+// try {
+//
+//     var user = JSON.parse(data); // <-- выполнится без ошибок
+//
+//     if (!user.name) {
+//         throw new SyntaxError("Данные некорректны");
+//     }
+//
+//     alert( user.name );
+//
+// } catch (e) {
+//     alert( "Извините, в данных ошибка" + e );
+// }
+
+// try {
+//
+//     alert('Начало блока try');  // (1) <--
+//
+//     lalala; // ошибка, переменная не определена!
+//
+//     alert('Конец блока try');  // (2)
+//
+// } catch(e) {
+//
+//     alert('Ошибка ' + e.name + ":" + e.message + "\n" + e.stack); // (3) <--
+//
+// }
+//
+// alert("Потом код продолжит выполнение...");
+
+// var toDo = prompt("математическое выражение", 1 + 1);
+// alert( eval(toDo) );
+
+// function printNumbersInterval() {
+//     var i = 1;
+//     setTimeout(function run() {
+//         console.log( i++ );
+//         if (i <= 20) setTimeout(run, 100);
+//     }, 100)
+// }
+//
+// printNumbersInterval()
+
+// function printNumbersInterval() {
+//     var i = 1;
+//     var timerId = setInterval(function () {
+//         console.log( i++ );
+//         if (i > 20) clearInterval(timerId);
+//     }, 100)
+// }
+//
+// printNumbersInterval()
+
+// // начать повторы с интервалом 2 сек
+// var timerId = setInterval(function() {
+//     alert( "тик" );
+// }, 2000);
+//
+// // через 5 сек остановить повторы
+// setTimeout(function() {
+//     clearInterval(timerId);
+//     alert( 'стоп' );
+// }, 5000);
+
+// var timerId = setTimeout(function() { alert(1) }, 1000);
+// alert(timerId); // число - идентификатор таймера
+//
+// clearTimeout(timerId);
+// alert(timerId); // всё ещё число, оно не обнуляется после отмены
+
+// var leader = {
+//     name: "Василий Иванович",
+//     age: 35
+// };
+//
+// var leaderStr = JSON.stringify(leader);
+// leader = JSON.parse(leaderStr);
+
+// var schedule = '{ \
+//   "events": [ \
+//     {"title":"Конференция","date":"2014-11-30T12:00:00.000Z"}, \
+//     {"title":"День рождения","date":"2015-04-18T12:00:00.000Z"} \
+//   ]\
+// }';
+//
+// schedule = JSON.parse(schedule, function(key, value) {
+//     if (key == 'date') return new Date(value);
+//     return value;
+// });
+//
+// alert( schedule.events[1].date.getDate() ); // сработает!
+
+// // title: название события, date: дата события
+// var str = '{"title":"Конференция","date":"2014-11-30T12:00:00.000Z"}';
+//
+//
+// var event = JSON.parse(str, function(key, value) {
+//     if (key == 'date') return new Date(value);
+//     return value;
+// });
+//
+// alert( event.date.getDate() ); // теперь сработает!
+
+// JSON.parse – читает объекты из строки в формате JSON.
+// JSON.stringify – превращает объекты в строку в формате JSON,
+// используется, когда нужно из JavaScript передать данные по сети.
+// var numbers = "[0, 1, 2, 3]";
+// console.log( numbers );
+//
+// console.log( JSON.parse(numbers) );
+
+// function formatDate(date) {
+//     if ( typeof date === 'string') {
+//         console.log("string");
+//         return date.split("-").join(".");
+//     } else if ( typeof date === 'number' ) {
+//         console.log("number");
+//     } else if ( Array.isArray( date )) {
+//         console.log("arr");
+//     }else if (date instanceof Date) {
+//         console.log("Date");
+//     }
+// }
+//
+// alert( formatDate('2011-10-02') ); // 02.10.11
+// alert( formatDate(1234567890) ); // 14.02.09
+// alert( formatDate([2014, 0, 1]) ); // 01.01.14
+// alert( formatDate(new Date(2014, 0, 1)) ); // 01.01.14
+
+// Декоратор – приём программирования, который позволяет
+// взять существующую функцию и изменить/расширить ее поведение.
+// Декоратор получает функцию и возвращает обертку, которая делает
+// что-то своё «вокруг» вызова основной функции.
+
+// var toString = {}.toString;
+//
+// var arr = [1, 2];
+// alert( toString.call(arr) ); // [object Array]
+//
+// var date = new Date;
+// alert( toString.call(date) ); // [object Date]
+//
+// var user = { name: "Вася" };
+// alert( toString.call(user) ); // [object Object]
+
+// function sum() {
+//     return [].reduce.call(arguments, function(a, b) {
+//         return a + b;
+//     });
+// }
+//
+// function mul() {
+//     return [].reduce.call(arguments, function(a, b) {
+//         return a * b;
+//     });
+// }
+//
+// function applyAll(func) {
+//     return func.apply(this, [].slice.call(arguments, 1));
+// }
+//
+// alert( applyAll(sum, 1, 2, 3) ); // 6
+// alert( applyAll(mul, 2, 3, 4) ); // 24
+// alert( applyAll(Math.max, 2, -2, 3) ); // 3
+// alert( applyAll(Math.min, 2, -2, 3) ); // -2
+
+
+// function sum(arr) {
+//     return arr.reduce(function(a, b) {
+//         return a + b;
+//     });
+// }
+//
+// alert( sum([1, 2, 3]) ); // 6 (=1+2+3)
+//
+// function sumArgs() {
+//     return [].reduce.call(arguments, function(a, b) {
+//         return a + b;
+//     });
+// }
+//
+// alert( sumArgs(1, 2, 3) ); // 6, аргументы переданы через запятую, без массива
+
+// function printArgs() {
+//     arguments.join = [].join;
+//
+//     var argStr = arguments.join(':');
+//     alert( argStr );
+// }
+//
+// printArgs(1, 2, 4);
+
+// function Article() {
+//     this.created = new Date();
+//
+//     Article.count++; // увеличиваем счетчик при каждом вызове
+//     Article.last = this.created; // и запоминаем дату
+// }
+// Article.count = 0; // начальное значение
+// // (нельзя оставить undefined, т.к. Article.count++ будет NaN)
+//
+// Article.showStats = function() {
+//     alert( 'Всего: ' + this.count + ', Последняя: ' + this.last );
+// };
+//
+// new Article();
+// new Article();
+//
+// Article.showStats(); // Всего: 2, Последняя: (дата)
+//
+// new Article();
+//
+// Article.showStats(); // Всего: 3, Последняя: (дата)
+
+// Поэтому полиморфные конструкторы лучше использовать там,
+// где нужен именно полиморфизм, т.е. когда непонятно, какого
+// типа аргумент передадут, и хочется в одном конструкторе охватить все варианты.
+// А в остальных случаях отличная альтернатива – фабричные методы.
+
+// function User() {
+//     this.sayHi = function () {
+//         alert( this.name );
+//     };
+// };
+//
+// User.createAnonymous = function () {
+//     var user = new User;
+//     user.name = "аноним";
+//     return user;
+// };
+//
+// User.createFromData = function(userData) {
+//     var user = new User;
+//     user.name = userData.name;
+//     user.age = userData.age;
+//     return user;
+// };
+//
+// var guest = User.createAnonymous();
+// guest.sayHi();
+//
+// var knownUser = User.createFromData({
+//     name: 'Вася',
+//     age: 25
+// });
+// knownUser.sayHi(); // Вася
+
+// function Journal() {};
+//
+// Journal.formatDate = function (date) {
+//     return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+// }
+//
+// alert( Journal.formatDate(new Date));
+
+// // Сравнение объектов
+// function Journal(date) {
+//     this.date = date;
+//
+//     this.formatDate = function (date) {
+//         return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+//     };
+//
+//     this.getTitle = function () {
+//         return "Выпуск от " + this.formatDate( this.date );
+//     }
+// }
+//
+// Journal.compare = function (journalA, journalB) {
+//     return journalA.date - journalB.date;
+// };
+//
+// var journals = [
+//     new Journal(new Date(2012, 1, 1)),
+//     new Journal(new Date(2012, 0, 1)),
+//     new Journal(new Date(2011, 11, 1))
+// ]
+//
+// function findMin(journals) {
+//     var min = 0;
+//     for (var i = 0; i < journals.length; i++) {
+//         if (Journal.compare(journals[min], journals[i]) > 0) min = i;
+//     }
+//     return journals[min];
+// }
+//
+// alert ( findMin(journals).getTitle() );
+
+// function Article() {
+//     Article.count++;
+// }
+//
+// Article.count = 0;
+// Article.DEFAULT_FORMAT = "html";
+//
+// Article.showCount = function() {
+//     alert( this.count );
+// }
+//
+// new Article();
+// new Article();
+//
+// Article.showCount();
+
+// function User(fullName) {
+//     this.fullName = fullName;
+// }
+//
+// var vasya = new User("Василий Попкин");
+//
+// Object.defineProperties(User, {
+//     firstName: {
+//         get: function () {
+//             return this.fullName.split(' ')[0];
+//         },
+//         set: function (newFirstName) {
+//             this.fullName = newFirstName + ' ' + this.lastName;
+//         }
+//     },
+//     surname: {
+//         get: function () {
+//             return this.fullName.split(' ')[1];
+//         },
+//         set: function (newLastName) {
+//             this.fullName = this.firstName + ' ' + newLastName;
+//         }
+//     },
+// });
 
 // var obj = {
 //     test: 5
