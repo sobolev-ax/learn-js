@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+
+
+<!--<style>
+    .external {
+        background-color: yellow
+    }
+</style>
+
+<a name="list">список</a>
+<ul>
+    <li><a href="http://google.com">http://google.com</a></li>
+    <li><a href="/tutorial">/tutorial.html</a></li>
+    <li><a href="local/path">local/path</a></li>
+    <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
+    <li><a href="http://nodejs.org">http://nodejs.org</a></li>
+    <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+</ul>
+
+<script>
+    var arrLinks = document.body.getElementsByTagName('a');
+    var arrLinksLength = arrLinks.length;
+    var arrLinksHref;
+
+    for (var i = 0; i < arrLinksLength; i++) {
+        arrLinksHref = arrLinks[i].getAttribute('href');
+        if ( arrLinksHref !== null) {
+            if ( !arrLinksHref.indexOf("ftp") ) {
+                addClassExternal( arrLinks[i] )
+            };
+            if ( !arrLinksHref.indexOf("http") && !!arrLinksHref.indexOf("http://internal.com") ) {
+                addClassExternal( arrLinks[i] );
+            };
+        };
+        //console.log( arrLinksHref );
+       // addClassExternal( arrLinks[i] );
+    }
+
+    function addClassExternal(elem) {
+        elem.classList.add("external");
+    }
+</script>-->
+
+<!--<div id="widget" data-widget-name="menu">Выберите жанр</div>
+
+<script>
+    console.log ( widget );
+    var elem = widget;
+    var elemName = widget.dataset.widgetName;
+    console.log ( elemName );
+</script>-->
+
+
+<!-- dataset -->
+
+<!--Конечно можно, но манипулировать атрибутом из JavaScript гораздо проще.-->
+
+<!--Эту особенность можно красиво использовать.
+
+Получается, что атрибут
+input.getAttribute('value') хранит оригинальное (исходное) значение даже после того,
+как пользователь заполнил поле и свойство изменилось.-->
+
+<!--elem.hasAttribute(name) – проверяет наличие атрибута
+elem.getAttribute(name) – получает значение атрибута
+elem.setAttribute(name, value) – устанавливает атрибут
+elem.removeAttribute(name) – удаляет атрибут
+Эти методы работают со значением, которое находится в HTML.-->
+
+<!--<div>Привет, Мир!</div>
+
+<script>
+    var div = document.body.children[0];
+
+    // заменяем div.outerHTML на <p>...</p>
+    div.outerHTML = '<p>Новый элемент!</p>';
+
+    // ... но содержимое div.outerHTML осталось тем же, несмотря на "перезапись"
+    alert( div.outerHTML ); // <div>Привет, Мир!</div>
+</script>-->
+
+<!--<script>
+    var childNodes = document.body.childNodes;
+
+    for (var i = 0; i < childNodes.length; i++) {
+
+        // отфильтровать не-элементы
+        if (childNodes[i].nodeType != 1) continue;
+
+        alert( childNodes[i] );
+
+    }
+</script>-->
+
+<!--<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+
+<script>
+    var arrGet = [];
+    var arrQuery = [];
+
+    function get() {
+        var collectionGet = document.getElementsByTagName('p');
+        var lengthGet = collectionGet.length;
+        for (var i = 0; i < lengthGet; i++) {
+            arrGet.push( collectionGet[i] );
+        };
+    }
+
+    function query() {
+        var collectionQuery = document.querySelectorAll('p');
+        var lengthQuery = collectionQuery.length;
+        for (var i = 0; i < lengthQuery; i++) {
+            arrQuery.push( collectionQuery[i] );
+        };
+    }
+
+
+    function bench(f) {
+        var date = new Date();
+        for (var i = 0; i < 1000; i++) f();
+        return new Date() - date;
+    }
+
+    // bench для каждого теста запустим много раз, чередуя
+    var timeGet = 0,
+        timeQuery = 0;
+    for (var i = 0; i < 100; i++) {
+        timeGet += bench(get);
+        timeQuery += bench(query);
+    }
+
+    alert( 'Время get: ' + timeGet + 'мс' );
+    alert( 'Время query: ' + timeQuery + 'мс' );
+</script>-->
+
+<!--<ul>
+    <li>Животные
+        <ul>
+            <li>Млекопитающие
+                <ul>
+                    <li>Коровы</li>
+                    <li>Ослы</li>
+                    <li>Собаки</li>
+                    <li>Тигры</li>
+                </ul>
+            </li>
+            <li>Другие
+                <ul>
+                    <li>Змеи</li>
+                    <li>Птицы</li>
+                    <li>Ящерицы</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Рыбы
+        <ul>
+            <li>Аквариумные
+                <ul>
+                    <li>Гуппи</li>
+                    <li>Скалярии</li>
+                </ul>
+
+            </li>
+            <li>Морские
+                <ul>
+                    <li>Морская форель</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    var liArr = document.getElementsByTagName('li');
+
+    for (var i = 0; i < liArr.length; i++) {
+        var liText = liArr[i].firstChild.data().trim();
+        var liInnerLiength = liArr[i].getElementsByTagName('li').length;
+        console.log(
+            liText + ": " + liInnerLiength);
+    }
+</script>-->
+
+
+<!--// НЕ ПОДДЕРЖИВАЕТСЯ .CLOSEST
+<ul>
+    <li class="chapter">Глава I
+        <ul>
+            <li class="subchapter">Глава <span class="num">1.1</span></li>
+            <li class="subchapter">Глава <span class="num">1.2</span></li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    var numberSpan = document.querySelectorAll("num");
+    console.log(numberSpan.closest('li').className);
+    console.log(numberSpan.closest('chapter').tagName);
+    console.log(numberSpan.closest('span') === numberSpan);
+</script>-->
+
+<!--<a href="http://example.com/file.zip">...</a>
+<a href="http://ya.ru">...</a>
+
+<script>
+    var elements = document.body.children;
+
+    for (var i = 0; i < elements.length; i++) {
+        if (elements[i].matches('a[href$="zip"')) {
+            console.log("Ссылка на архив: " + elements[i].href);
+        }
+    }
+</script>-->
+
+<!--<ul>-->
+    <!--<li>Этот</li>-->
+    <!--<li>тест</li>-->
+<!--</ul>-->
+<!--<ul>-->
+    <!--<li>полностью</li>-->
+    <!--<li>пройден</li>-->
+<!--</ul>-->
+
+<!--<script>-->
+    <!--var elements = document.querySelectorAll('ul > li:last-child');-->
+
+    <!--setTimeout(function () {-->
+        <!--var elementsHover = document.querySelectorAll(':hover');-->
+        <!--for (var i = 0; i < elementsHover.length; i++) {-->
+            <!--elementsHover[i].style.backgroundColor = 'red';-->
+        <!--}-->
+    <!--}, 2000);-->
+
+    <!--for (var i = 0; i < elements.length; i++) {-->
+        <!--console.log(elements[i].innerHTML);-->
+        <!--console.log(i);-->
+    <!--}-->
+
+
+<!--</script>-->
+
+<!--<table id="age-table">
+    <tr>
+        <td>Ваш возраст:</td>
+
+        <td>
+            <label>
+                <input type="radio" name="age" value="young" checked> младше 18
+            </label>
+            <label>
+                <input type="radio" name="age" value="mature"> от 18 до 50
+            </label>
+            <label>
+                <input type="radio" name="age" value="senior"> старше 60
+            </label>
+        </td>
+    </tr>
+
+</table>
+
+<script>
+    var tableElem = document.getElementById('age-table');
+    var elements = tableElem.getElementsByTagName('input');
+    var elems = document.getElementsByName('age');
+
+    for (var i = 0; i < elements.length; i++) {
+        var input = elements[i];
+        console.log(input.value + ": " + input.checked)
+    }
+    for (var i = 0; i < elems.length; i++) {
+        var input = elems[i];
+        console.log(input.value + ": " + input.checked)
+    }
+</script>-->
+
+<!--<div>Пользователи:</div>
+<ul>
+    <li>Маша</li>
+    <li>Вовочка</li>
+</ul>
+
+<div id="content">Выделим этот элемент</div>-->
+
+<!-- комментарий -->
+
+
+<script>
+//    var elem = document.getElementById('content');
+//
+//    elem.style.background = 'red';
+//    alert( elem === content);
+//
+//    content.style.background = "";
+
+//    for (var i = 0; i < table.rows.length; i++) {
+//        var row = table.rows[i];
+//        row.cells[i].style.backgroundColor = 'red';
+//    }
+
+//    console.log( document.documentElement.firstChild );
+//    console.log( document.body.children[1] );
+//    console.log( document.body.children[1].children[1] );
+</script>
+
+</body>
+
+</html>
