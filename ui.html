@@ -8,6 +8,211 @@
 <body>
 
 
+<ul>
+    <li>Животные
+        <ul>
+            <li>Млекопитающие
+                <ul>
+                    <li>Коровы</li>
+                    <li>Ослы</li>
+                    <li>Собаки</li>
+                    <li>Тигры</li>
+                </ul>
+            </li>
+            <li>Другие
+                <ul>
+                    <li>Змеи</li>
+                    <li>Птицы</li>
+                    <li>Ящерицы</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Рыбы
+        <ul>
+            <li>Аквариумные
+                <ul>
+                    <li>Гуппи</li>
+                    <li>Скалярии</li>
+                </ul>
+
+            </li>
+            <li>Морские
+                <ul>
+                    <li>Морская форель</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    var elements = document.body.getElementsByTagName('li');
+    var count;
+
+    for (var i = 0; i < elements.length; i++) {
+        count = chekLi( elements[i] );
+        if ( count ) {
+            //console.log( count )
+            elements[i].firstChild.innerHtml =
+                elements[i].innerText + " [" + count + "]"
+            ;
+        };
+    };
+
+   function chekLi(li) {
+       var inners = li.getElementsByTagName('li');
+       if ( inners.length ) {
+           return inners.length;
+       };
+       return false;
+   };
+</script>
+
+
+<!--<h1>Список!</h1>
+
+<ul id="userList">
+
+</ul>
+
+<script>
+    var list = userList;
+    var item;
+    var li;
+
+    while (true) {
+        item = prompt("Элемент списка", "");
+        if  (item === "" || !item) break;
+        li = document.createElement('li');
+        li.appendChild( document.createTextNode( item ) );
+        list.appendChild( li );
+    }
+</script>-->
+
+
+<!--<table>
+    aaa
+    <tr>
+        <td>Test</td>
+    </tr>
+</table>-->
+
+
+<!--<table id="table">
+    <tr>
+        <td>Это</td>
+        <td>Все</td>
+        <td>Элементы DOM</td>
+    </tr>
+</table>
+
+<ol id="ol">
+    <li>Вася</li>
+    <li>Петя</li>
+    <li>Маша</li>
+    <li>Даша</li>
+</ol>
+
+<script>
+    function removeChildren(elem) {
+        try {
+            elem.innerHTML = "";
+        } catch (e) {
+            while (elem.lastChild) {
+                elem.removeChild(elem.lastChild);
+            }
+        }
+    }
+
+    removeChildren(table); // очищает таблицу
+    removeChildren(ol); // очищает список
+</script>-->
+
+
+<!--<div>Это</div>
+<div>Элементы</div>
+
+<script>
+    var elem = document.createElement('div');
+    elem.innerHTML = '<b>Новый элемент</b>';
+
+    function insertAfter(elem, refElem) {
+
+        return refElem.parentNode.insertBefore(elem, refElem.nextSibling);
+
+    }
+
+    var body = document.body;
+
+    // вставить elem после первого элемента
+    insertAfter(elem, body.firstChild); // <-&#45;&#45; должно работать
+
+    // вставить elem за последним элементом
+    insertAfter(elem, body.lastChild); // <-&#45;&#45; должно работать
+</script>-->
+
+
+
+
+<!--<div>Это</div>
+<div>Все</div>
+<div>Элементы DOM</div>
+
+<script>
+    if (!Element.prototype.removes) {
+        Element.prototype.removes = function removes() {
+            if (this.parentNode) {
+                this.parentNode.removeChild(this);
+            }
+        }
+    }
+
+    var elem = document.body.children[0];
+
+    elem.removes(); // <&#45;&#45; вызов должен удалить элемент
+</script>-->
+
+
+
+
+<!--<div id="elems"></div>
+
+<script>
+    var elem = elems;
+    var text = "<p>Привет!!!!</p>";
+    elem.innerHTML = text;
+    //elem.appendChild(document.createTextNode(text));
+</script>-->
+
+<!--<style>
+    .alert {
+        padding: 15px;
+        border: 1px solid #d6e9c6;
+        border-radius: 4px;
+        color: #3c763d;
+        background-color: #dff0d8;
+    }
+</style>
+<script>
+    var parentElem = document.body;
+    var div = document.createElement('div');
+    //var textElem = document.createTextNode('Тут был я');
+    div.className = "alert alert-success";
+    div.innerHTML = "<strong>Ура!</strong> Вы прочитали это важное сообщение.";
+
+    //parentElem.appendChild(div);
+    parentElem.insertBefore(div, parentElem.firstChild);
+
+    var div2 = div.cloneNode(true);
+    div2.querySelector('strong').innerHTML = 'Супер!';
+    div.parentNode.insertBefore( div2, div.nextSibling);
+
+    setTimeout(function () {
+        parentElem.removeChild(div);
+    }, 2000);
+</script>-->
+
 <!--<style>
     .external {
         background-color: yellow
@@ -444,7 +649,7 @@ elem.removeAttribute(name) – удаляет атрибут
 <!-- комментарий -->
 
 
-<script>
+<!--<script>
 //    var elem = document.getElementById('content');
 //
 //    elem.style.background = 'red';
@@ -460,7 +665,7 @@ elem.removeAttribute(name) – удаляет атрибут
 //    console.log( document.documentElement.firstChild );
 //    console.log( document.body.children[1] );
 //    console.log( document.body.children[1].children[1] );
-</script>
+</script>-->
 
 </body>
 
