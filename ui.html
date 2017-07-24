@@ -7,8 +7,218 @@
 
 <body>
 
+<div id="example">
+    <h3>Introduction</h3>
+    <p>This Ecma Standard is based on several originating technologies, the most well known being JavaScript (Netscape) and JScript (Microsoft). The language was invented by Brendan Eich at Netscape and first appeared in that company's Navigator 2.0 browser.
+        It has appeared in all subsequent browsers from Netscape and in all browsers from Microsoft starting with Internet Explorer 3.0. The development of this Standard started in November 1996. The first edition of this Ecma Standard was adopted by the
+        Ecma General Assembly of June 1997.</p>
 
-<ul>
+    <p>That Ecma Standard was submitted to ISO/IEC JTC 1 for adoption under the fast-track procedure, and approved as international standard ISO/IEC 16262, in April 1998. The Ecma General Assembly of June 1998 approved the second edition of ECMA-262 to keep
+        it fully aligned with ISO/IEC 16262. Changes between the first and the second edition are editorial in nature.</p>
+
+    <p>The third edition of the Standard introduced powerful regular expressions, better string handling, new control statements, try/catch exception handling, tighter definition of errors, formatting for numeric output and minor changes in anticipation
+        of forthcoming internationalisation facilities and future language growth. The third edition of the ECMAScript standard was adopted by the Ecma General Assembly of December 1999 and published as ISO/IEC 16262:2002 in June 2002.</p>
+</div>
+<style>
+    #example {
+        width: 300px;
+
+        height: 200px;
+
+        border: 25px solid #E8C48F; /* рамка 25px */
+
+        padding: 20px;              /* поля 20px */
+
+        overflow: auto;             /* прокрутка */
+    }
+</style>
+
+<!--<style>
+    .notification {
+        position: fixed;
+        z-index: 1000;
+        padding: 5px;
+        border: 1px solid black;
+        font: normal 20px Georgia;
+        background: white;
+        text-align: center;
+    }
+
+    .welcome {
+        background: red;
+        color: yellow;
+    }
+</style>
+<script>
+    /**
+     * Показывает уведомление, пропадающее через 1.5 сек
+     *
+     * @param options.top {number} вертикальный отступ, в px
+     * @param options.right {number} правый отступ, в px
+     * @param options.cssText {string} строка стиля
+     * @param options.className {string} CSS-класс
+     * @param options.html {string} HTML-текст для показа
+     */
+    function showNotification(options) {
+        var e = document.createElement('div');
+
+        e.classList.add("notification");
+        e.style.position = "fixed";
+
+        if ( options.className ) e.classList.add( options.className );
+        if ( options.top ) e.style.top = options.top + "px";
+        if ( options.right ) e.style.right = options.right + "px";
+        if ( options.html ) e.innerText = options.html;
+
+        var e = document.body.appendChild( e );
+        setTimeout(function () {
+            document.body.removeChild( e );
+        }, 1500)
+    }
+
+    showNotification({
+        top: 10,
+        right: 10,
+        html: "Привет",
+        className: "welcome"
+    });
+
+    // тест работоспособности
+    var i = 0;
+    setInterval(function() {
+        showNotification({
+            top: 10,
+            right: 10,
+            html: 'Привет ' + ++i,
+            className: "welcome"
+        });
+    }, 2000);
+</script>-->
+
+<!--<script>
+    var a = document.createElement('a');
+    a.setAttribute('href', '/');
+    a.className = 'button';
+    a.innerText = "Нажми меня";
+    /*
+    * -moz-border-radius: 8px;
+     -webkit-border-radius: 8px;
+     border-radius: 8px;
+     border: 2px groove green;
+     display: block;
+     height: 30px;
+     line-height: 30px;
+     width: 100px;
+     text-decoration: none;
+     text-align: center;
+     color: red;
+     font-weight: bold;
+    * */
+    a.style.MozBorderRadius = "8px";
+    a.style.WebkitBorderRadius= "8px";
+    a.style.borderRadius= "8px";
+    a.style.border= "2px groove green";
+    a.style.display= "block";
+    a.style.height= "30px";
+    a.style.lineHeight= "30px";
+    a.style.width= "100px";
+    a.style.textDecoration= "none";
+    a.style.textAlign= "center";
+    a.style.color= "red";
+    a.style.fontWeight= "bold";
+
+    document.body.appendChild( a );
+</script>-->
+
+<!--<ul>
+    <li>1</li>
+    <li>2</li>
+</ul>
+
+<script>
+    var ul = document.getElementsByTagName('ul')[0];
+    var elements = "<li>3</li><li>4</li><li>5</li>";
+
+    ul.insertAdjacentHTML( "beforeEnd", elements );
+</script>-->
+
+<!--<script>
+    var clock = document.createElement('div');
+    var hours = document.createElement('span');
+    var minutes = document.createElement('span');
+    var seconds = document.createElement('span');
+
+    clock.classList.add('clock');
+    hours.classList.add('hours');
+    minutes.classList.add('minutes');
+    seconds.classList.add('seconds');
+
+    setInterval( function() {
+        clock.innerHTML = "";
+
+        var d = new Date();
+        var dHours = d.getHours();
+        var dMinutes = d.getMinutes();
+        var dSeconds = d.getSeconds();
+
+        hours.innerText = dHours;
+        minutes.innerText = dMinutes;
+        seconds.innerText = dSeconds;
+
+        clock.appendChild( hours );
+        clock.appendChild( document.createTextNode(":") );
+        clock.appendChild( minutes );
+        clock.appendChild( document.createTextNode(":") );
+        clock.appendChild( seconds );
+
+        document.body.appendChild( clock );
+    }, 1000 );
+
+</script>-->
+
+
+
+<!--<div id="container"></div>
+
+<script>
+    var data = {
+        "Рыбы": {
+            "Форель": {},
+            "Щука": {}
+        },
+
+        "Деревья": {
+            "Хвойные": {
+                "Лиственница": {},
+                "Ель": {}
+            },
+            "Цветковые": {
+                "Берёза": {},
+                "Тополь": {}
+            }
+        }
+    };
+
+    function createTree(container, obj) {
+        container.innerHTML = createTreeText(obj);
+    };
+
+    function createTreeText(obj) {
+        var li = "";
+        for (var key in obj) {
+            li += '<li>' + key + createTreeText(obj[key]) + '</li>';
+        }
+        if (li) {
+            var ul = '<ul>' + li + '</ul>';
+        }
+        return ul || '';
+    }
+
+    var container = document.getElementById('container');
+    createTree(container, data);
+</script>-->
+
+<!--<ul>
     <li>Животные
         <ul>
             <li>Млекопитающие
@@ -53,10 +263,8 @@
     for (var i = 0; i < elements.length; i++) {
         count = chekLi( elements[i] );
         if ( count ) {
-            //console.log( count )
-            elements[i].firstChild.innerHtml =
-                elements[i].innerText + " [" + count + "]"
-            ;
+            //console.log( elements[i].firstChild.data.trim() + " [" + count + "]" );
+            elements[i].firstChild.data = elements[i].firstChild.data.trim() + " [" + count + "]";
         };
     };
 
@@ -67,7 +275,7 @@
        };
        return false;
    };
-</script>
+</script>-->
 
 
 <!--<h1>Список!</h1>
@@ -666,6 +874,44 @@ elem.removeAttribute(name) – удаляет атрибут
 //    console.log( document.body.children[1] );
 //    console.log( document.body.children[1].children[1] );
 </script>-->
+
+<script>
+    // http://learn.javascript.ru/files/tutorial/browser/dom/insertAdjacentFF.js
+    // Добавляет поддержку insertAdjacent* в Firefox
+
+    if (typeof HTMLElement != "undefined" && !HTMLElement.prototype.insertAdjacentElement) {
+        HTMLElement.prototype.insertAdjacentElement = function(where, parsedNode) {
+            switch (where) {
+                case 'beforeBegin':
+                    this.parentNode.insertBefore(parsedNode, this)
+                    break;
+                case 'afterBegin':
+                    this.insertBefore(parsedNode, this.firstChild);
+                    break;
+                case 'beforeEnd':
+                    this.appendChild(parsedNode);
+                    break;
+                case 'afterEnd':
+                    if (this.nextSibling) this.parentNode.insertBefore(parsedNode, this.nextSibling);
+                    else this.parentNode.appendChild(parsedNode);
+                    break;
+            }
+        }
+
+        HTMLElement.prototype.insertAdjacentHTML = function(where, htmlStr) {
+            var r = this.ownerDocument.createRange();
+            r.setStartBefore(this);
+            var parsedHTML = r.createContextualFragment(htmlStr);
+            this.insertAdjacentElement(where, parsedHTML)
+        }
+
+
+        HTMLElement.prototype.insertAdjacentText = function(where, txtStr) {
+            var parsedText = document.createTextNode(txtStr)
+            this.insertAdjacentElement(where, parsedText)
+        }
+    }
+</script>
 
 </body>
 
