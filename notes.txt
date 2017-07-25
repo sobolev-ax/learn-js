@@ -5,13 +5,22 @@ arr.forEach(function (item, i, arr) {
 	console.log( i + ": " + item + " (массив: " + arr + ")" );
 });
 
-arr.filter( function( item, i, arr ) {
-	return item > 0;
+var positive = arr.filter( function( item, i, arr ) { 
+	return item > 0; // возвращает если true
 } );
 
+var lengths = arr.map(function (name) {
+	return name.length;
+});
 
+arr.every(function (item) { // возвращает true если у каждого элемента true
+	return item > 0;
+}):
 
+arr.some(function (item) { // возвращает true если у хотябы одного true
+	return item > 0;
+}):
 
-
-
+arr.reduce(callback[, initialValue]) - для последовательной обработки каждого элелемента
+массива с сохранением промежуточного результата.
 
