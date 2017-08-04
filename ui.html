@@ -4,11 +4,279 @@
 <head>
     <meta charset="utf-8">
 </head>
-
-
 <body>
 
+
+<!--<style>
+  body {
+    height:2000px;
+  }
+  #field {
+    width: 200px;
+    height: 150px;
+    border: 10px groove black;
+    background-color: #00FF00;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    user-select: none;
+  }
+  #ball {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -20px;
+    margin-top: -20px;
+    transition: all .8s ease-out;
+  }
+</style>
+
+Кликните на любое место поля, чтобы мяч перелетел туда.
+<br> Мяч никогда не вылетит за границы поля.
+
+
+<div id="field" onclick="move()">
+  <img src="https://js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+</div>
+
+<script>
+  function move(e) {
+    e = e || event;
+    var field = event.currentTarget;
+    var ball = field.firstElementChild;
+    var ballHeight = ball.offsetHeight;
+    var ballWidth = ball.offsetWidth;
+    var coords = field.getBoundingClientRect();
+    var coordsLeft = coords.left;
+    var coordsTop = coords.top;
+    var border = (field.offsetWidth - field.clientWidth) / 2;
+
+    ball.style.marginTop = -(ballHeight / 2) + "px";
+    ball.style.marginLeft = -(ballWidth / 2) + "px";
+
+    var x = e.clientX - coordsLeft - border;
+    var y = e.clientY - coordsTop - border;
+
+    if (x < ballWidth / 2) x = ballWidth / 2;
+    if (x > field.clientWidth - ballWidth / 2) x = field.clientWidth - ballWidth / 2;
+
+    if (y < ballHeight / 2) y = ballHeight / 2;
+    if (y > field.clientHeight - ballHeight / 2) y = field.clientHeight - ballHeight / 2;
+
+    ball.style.left = x + "px";
+    ball.style.top = y + "px";
+  }
+</script>-->
+
+
+
+<!--<div id="carousel" class="carousel">
+  <button class="arrow prev">⇦</button>
+  <div class="gallery">
+    <ul class="images">
+      <li><img src="https://js.cx/carousel/1.png"></li>
+      <li><img src="https://js.cx/carousel/2.png"></li>
+      <li><img src="https://js.cx/carousel/3.png"></li>
+      <li><img src="https://js.cx/carousel/4.png"></li>
+      <li><img src="https://js.cx/carousel/5.png"></li>
+      <li><img src="https://js.cx/carousel/6.png"></li>
+      <li><img src="https://js.cx/carousel/7.png"></li>
+      <li><img src="https://js.cx/carousel/8.png"></li>
+      <li><img src="https://js.cx/carousel/9.png"></li>
+      <li><img src="https://js.cx/carousel/10.png"></li>
+    </ul>
+  </div>
+  <button class="arrow next">⇨</button>
+</div>
+
 <style>
+  body {
+    padding: 10px;
+  }
+
+  .carousel {
+    position: relative;
+    width: 398px;
+    padding: 10px 40px;
+    border: 1px solid #CCC;
+    border-radius: 15px;
+    background: #eee;
+  }
+
+  .carousel img {
+    width: 130px;
+    height: 130px;
+    /* по умолчанию inline, в ряде браузеров это даст лишнее пространство вокруг элементов */
+
+    display: block;
+  }
+
+  .arrow {
+    position: absolute;
+    top: 60px;
+    padding: 0;
+    background: #ddd;
+    border-radius: 15px;
+    border: 1px solid gray;
+    font-size: 24px;
+    line-height: 24px;
+    color: #444;
+    display: block;
+  }
+
+  .arrow:focus {
+    outline: none;
+  }
+
+  .arrow:hover {
+    background: #ccc;
+    cursor: pointer;
+  }
+
+  .prev {
+    left: 7px;
+  }
+
+  .next {
+    right: 7px;
+  }
+
+  .gallery {
+    width: 390px;
+    overflow: hidden;
+  }
+
+  .gallery ul {
+    height: 130px;
+    width: 9999px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: margin-left 250ms;
+    /* remove white-space between inline-block'ed li */
+    /* http://davidwalsh.name/remove-whitespace-inline-block */
+
+    font-size: 0;
+  }
+
+  .gallery li {
+    display: inline-block;
+  }
+</style>
+
+<script>
+  /* этот код помечает картинки, для удобства разработки */
+  var lis = document.getElementsByTagName('li');
+  for (var i = 0; i < lis.length; i++) {
+    lis[i].style.position = 'relative';
+    var span = document.createElement('span');
+    // обычно лучше использовать CSS-классы,
+    // но этот код - для удобства разработки, так что не будем трогать стили
+    span.style.cssText = 'position:absolute;left:0;top:0';
+    span.innerHTML = i + 1;
+    lis[i].appendChild(span);
+  }
+
+  /* конфигурация */
+  var width = 130; // ширина изображения
+  var count = 3; // количество изображений
+
+  var carousel = document.getElementById('carousel');
+  var list = carousel.querySelector('ul');
+  var listElems = carousel.querySelectorAll('li');
+
+  var position = 0; // текущий сдвиг влево
+
+  carousel.querySelector('.prev').onclick = function() {
+    // сдвиг влево
+    // последнее передвижение влево может быть не на 3, а на 2 или 1 элемент
+    position = Math.min(position + width * count, 0)
+    list.style.marginLeft = position + 'px';
+  };
+
+  carousel.querySelector('.next').onclick = function() {
+    // сдвиг вправо
+    // последнее передвижение вправо может быть не на 3, а на 2 или 1 элемент
+    position = Math.max(position - width * count, -width * (listElems.length - count));
+    list.style.marginLeft = position + 'px';
+  };
+</script>-->
+
+
+
+
+<!--<style>
+  body {
+    margin: 10px auto;
+    width: 470px;
+  }
+
+  h3 {
+    margin: 0;
+    padding-bottom: .3em;
+    font-size: 1.1em;
+  }
+
+  p {
+    margin: 0;
+    padding: 0 0 .5em;
+  }
+
+  .pane {
+    background: #edf5e1;
+    padding: 10px 20px 10px;
+    border-top: solid 2px #c4df9b;
+  }
+
+  .remove-button {
+    font-size: 110%;
+    color: darkred;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    float: right;
+  }
+</style>
+
+
+<div>
+  <div class="pane">
+    <button class="remove-button">[x]</button>
+    <h3>Лошадь</h3>
+    <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+  </div>
+  <div class="pane">
+    <button class="remove-button">[x]</button>
+    <h3>Осёл</h3>
+    <p>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии хозяйства и культуры человека. Все одомашненные ослы относятся к африканским ослам.</p>
+  </div>
+  <div class="pane">
+    <button class="remove-button">[x]</button>
+    <h3>Корова, а также пара слов о диком быке, о волах и о тёлках. </h3>
+    <p>Коро́ва — самка домашнего быка, одомашненного подвида дикого быка, парнокопытного жвачного животного семейства полорогих. Самцы вида называются быками, молодняк — телятами, кастрированные самцы — волами. Молодых (до первой стельности) самок называют
+      тёлками.
+    </p>
+  </div>
+</div>
+
+<script>
+  if ( document.querySelector(".remove-button") ) {
+    var removeButtons = document.querySelectorAll(".remove-button");
+    var removeButtonsLength = removeButtons.length;
+    for (var i = 0; i < removeButtonsLength; i++) {
+      removeButtons[i].addEventListener("click", removeThisParent);
+    }
+  };
+
+  function removeThisParent() {
+    this.parentElement.style.display = "none";
+  }
+</script>-->
+
+<!--<style>
   ul.jsMenu {
 
   }
@@ -68,7 +336,7 @@
   function menuDesign(menu) {
     menu.classList.add("jsMenu");
   }
-</script>
+</script>-->
 
 
 <!--<button onclick=" this.style.display = 'none' ">Нажми, чтобы меня спрятать</button>-->
