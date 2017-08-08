@@ -6,6 +6,123 @@
 </head>
 <body>
 
+<style>
+    li > span:hover {
+        font-weight: bold;
+        cursor: pointer;
+    }
+</style>
+
+<ul id="tree">
+    <li><span>Животные</span>
+        <ul>
+            <li><span>Млекопитающие</span>
+                <ul>
+                    <li><span>Коровы</span></li>
+                    <li><span>Ослы</span></li>
+                    <li><span>Собаки</span></li>
+                    <li><span>Тигры</span></li>
+                </ul>
+            </li>
+            <li><span>Другие</span>
+                <ul>
+                    <li><span>Змеи</span></li>
+                    <li><span>Птицы</span></li>
+                    <li><span>Ящерицы</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><span>Рыбы</span>
+        <ul>
+            <li><span>Аквариумные</span>
+                <ul>
+                    <li><span>Гуппи</span></li>
+                    <li><span>Скалярии</span></li>
+                </ul>
+
+            </li>
+            <li><span>Морские</span>
+                <ul>
+                    <li><span>Морская форель</span></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    tree.addEventListener('click', function (event) {
+        if (event.target.tagName === "SPAN") {
+          if( event.target.nextElementSibling ) {
+            console.log("yes");
+          }
+        }
+    })
+</script>
+
+<!--<style>
+    body {
+        margin: 10px auto;
+        width: 470px;
+    }
+
+    h3 {
+        margin: 0;
+        padding-bottom: .3em;
+        font-size: 1.1em;
+    }
+
+    p {
+        margin: 0;
+        padding: 0 0 .5em;
+    }
+
+    .pane {
+        background: #edf5e1;
+        padding: 10px 20px 10px;
+        border-top: solid 2px #c4df9b;
+    }
+
+    .remove-button {
+        font-size: 110%;
+        color: darkred;
+        right: 10px;
+        width: 24px;
+        height: 24px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        float: right;
+    }
+</style>
+<div id="removeList">
+    <div class="pane">
+        <button class="remove-button">[x]</button>
+        <h3>Лошадь</h3>
+        <p>Домашняя лошадь — животное семейства непарнокопытных, одомашненный и единственный сохранившийся подвид дикой лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+    </div>
+    <div class="pane">
+        <button class="remove-button">[x]</button>
+        <h3>Осёл</h3>
+        <p>Домашний осёл или ишак — одомашненный подвид дикого осла, сыгравший важную историческую роль в развитии хозяйства и культуры человека. Все одомашненные ослы относятся к африканским ослам.</p>
+    </div>
+    <div class="pane">
+        <button class="remove-button">[x]</button>
+        <h3>Корова, а также пара слов о диком быке, о волах и о тёлках. </h3>
+        <p>Коро́ва — самка домашнего быка, одомашненного подвида дикого быка, парнокопытного жвачного животного семейства полорогих. Самцы вида называются быками, молодняк — телятами, кастрированные самцы — волами. Молодых (до первой стельности) самок называют
+            тёлками.
+        </p>
+    </div>
+</div>
+
+<script>
+    removeList.onclick = function (e) {
+      if(e.target.classList.contains('remove-button')) {
+        e.target.parentElement.style.display = "none";
+      };
+    };
+</script>-->
 
 <!--<style>
   body {
