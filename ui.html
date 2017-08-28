@@ -6,7 +6,204 @@
 </head>
 <body>
 
-<style>
+<!--<style>
+    th {
+        cursor: pointer;
+    }
+
+    th:hover {
+        background: yellow;
+    }
+</style>
+
+<table id="grid">
+    <thead>
+    <tr>
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+        <th data-type="string">Фамилия</th>
+        <th data-type="number">Год Рождения</th>
+        <th data-type="string">Город</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>5</td>
+        <td>Вася</td>
+        <td>Обрубов</td>
+        <td>1990</td>
+        <td>Нижний Новгород</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Петя</td>
+        <td>Петров</td>
+        <td>1994</td>
+        <td>Нижний Новгород</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>Женя</td>
+        <td>Рыбаков</td>
+        <td>1989</td>
+        <td>Москва</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Маша</td>
+        <td>Сидорова</td>
+        <td>1991</td>
+        <td>Нижний Новгород</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Илья</td>
+        <td>Тихонов</td>
+        <td>1992</td>
+        <td>Москва</td>
+    </tr>
+    </tbody>
+</table>
+
+<table id="grid2">
+    <thead>
+    <tr>
+        <th data-type="number">Возраст</th>
+        <th data-type="string">Имя</th>
+        <th data-type="string">Фамилия</th>
+        <th data-type="number">Год Рождения</th>
+        <th data-type="string">Город</th>
+        <th data-type="number">#</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>5</td>
+        <td>Вася</td>
+        <td>Обрубов</td>
+        <td>1990</td>
+        <td>Нижний Новгород</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Петя</td>
+        <td>Петров</td>
+        <td>1994</td>
+        <td>Нижний Новгород</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>Женя</td>
+        <td>Рыбаков</td>
+        <td>1989</td>
+        <td>Москва</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Маша</td>
+        <td>Сидорова</td>
+        <td>1991</td>
+        <td>Нижний Новгород</td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Илья</td>
+        <td>Ёлкин</td>
+        <td>1992</td>
+        <td>Москва</td>
+        <td>5</td>
+    </tr>
+    </tbody>
+</table>
+
+<script>
+  grid.addEventListener("click", sortTable);
+  grid2.addEventListener("click", sortTable);
+  function sortTable() {
+    if ( event.target.hasAttribute("data-type") ) {
+      var table          = event.target.offsetParent;
+      var attribute      = event.target.getAttribute("data-type");
+      var index          = event.target.cellIndex;
+
+      var rows = getRows(table);
+      rows = sortingRows(rows, attribute, index);
+
+      if ( rows ) {
+        refreshTable(table, createNewRows(rows));
+      }
+    }
+  };
+  function refreshTable(table, newBlock) {
+    table.tBodies[0].innerHTML = newBlock.innerHTML;
+  }
+  function createNewRows(rows) {
+    var countRows       = rows.length;
+    var countCells      = rows[0].length;
+    var tbody           = document.createElement("tbody");
+    var tr, td;
+    for (var i = 0; i < countRows; i++) {
+      tr = document.createElement("tr");
+      for (var j = 0; j < countCells; j++) {
+        td = document.createElement("td");
+        td.innerHTML = rows[i][j];
+        tr.appendChild( td );
+      }
+      tbody.appendChild( tr );
+    }
+    return tbody;
+  }
+  function getRows(table) {
+    var rows            = table.rows;
+    var cells           = table.rows[0].cells;
+    var countRows       = rows.length;
+    var countCells      = cells.length;
+    var itemsArr        = [];
+
+    for (var i = 1; i < countRows; i++) {
+      var item = [];
+      for(var j = 0; j < countCells; j++) {
+        item.push( rows[i].cells[j].innerText );
+      }
+      itemsArr.push( item );
+    }
+    return itemsArr;
+  }
+  function sortingRows(rows, attribute, index) {
+    switch (attribute) {
+      case "number":
+        return sortByNumber(rows, index);
+        break;
+      case "string":
+        return sortByString(rows, index);
+        break;
+      default:
+        return false;
+        break;
+    }
+  }
+
+  function sortByString(rows, index) {
+    return rows.sort( compare );
+
+    function compare(itemA, itemB) {
+      return itemA[index].localeCompare( itemB[index] );
+    }
+  }
+
+  function sortByNumber(rows, index) {
+    return rows.sort( compare );
+
+    function compare(itemA, itemB) {
+      return itemA[index] - itemB[index];
+    }
+  }
+</script>-->
+
+<!--<style>
     li > span:hover {
         font-weight: bold;
         cursor: pointer;
@@ -54,10 +251,14 @@
 <script>
     tree.addEventListener('click', function (event) {
       if( event.target.nextElementSibling ) {
-        console.log("next-sibling");
+        if ( event.target.nextElementSibling.style.display === "none" ) {
+          event.target.nextElementSibling.style.display = "block";
+        } else {
+          event.target.nextElementSibling.style.display = "none"
+        }
       }
     })
-</script>
+</script>-->
 
 <!--<style>
     body {
